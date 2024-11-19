@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  resources :pages, only: [ :show ]
+  # resources :pages, only: [ :show ]
+  get "about", to: "pages#about"
+  get "contact", to: "pages#contact"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
