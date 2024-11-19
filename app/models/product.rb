@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
-  has_many :products
+  belongs_to :category
+  has_many :order_items
+
 
   def self.ransackable_associations(auth_object = nil)
     [ "products" ]

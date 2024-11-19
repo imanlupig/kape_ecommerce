@@ -4,7 +4,8 @@ ActiveAdmin.register Category do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name
+  permit_params :name
+  filter :name
   #
   # or
   #
