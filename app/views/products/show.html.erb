@@ -4,5 +4,6 @@
 <%= image_tag url_for(@product.image), size: "300x300", style: "object-fit: contain;" if @product.image.attached? %>
 <p><%= number_to_currency(@product.price) %></p>
 <p><%= @product.description %></p>
+<%= link_to "Buy Now", product_buy_now_path(@product) %>
 
 <%= link_to 'Back to Products', products_path, class: 'btn btn-primary' %>

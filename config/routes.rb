@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # resources :pages, only: [ :show ]
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
-  resources :products, only: [ :index, :show ]
+  resources :products, only: [ :index, :show ] do
+    resource :buy_now, only: [ :show ], controller: :buy_now
+  end
   resources :categories, only: [] do
     resources :products, only: :index
   end

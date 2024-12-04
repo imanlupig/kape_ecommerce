@@ -65,3 +65,5 @@ group :test do
 end
 
 gem "activeadmin", "~> 3.2"
+
+gem "stripe", "~> 13.2"
