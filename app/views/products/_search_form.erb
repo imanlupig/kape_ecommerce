@@ -1,17 +1,13 @@
-<% if @category.present? %>
-  <%= form_with url: category_products_path(@category), method: :get, local: true do |form| %>
-    <div class="form-group">
-      <%= form.label :search, "Search Products" %>
-      <%= form.text_field :search, placeholder: "Enter product name..." %>
-    </div>
-    <%= form.submit "Search" %>
-  <% end %>
-<% else %>
-  <%= form_with url: products_path, method: :get, local: true do |form| %>
-    <div class="form-group">
-      <%= form.label :search, "Search Products" %>
-      <%= form.text_field :search, placeholder: "Enter product name..." %>
-    </div>
-    <%= form.submit "Search" %>
-  <% end %>
+<%= form_with(url: products_path(params.permit(:search, :category_id)), method: :get, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :search, "Search Products" %>
+    <%= form.text_field :search, placeholder: "Enter product name...", value: params[:search] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category_id, "Category" %>
+    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name), include_blank: "All Categories", selected: params[:category_id] %>
+  </div>
+
+  <%= form.submit "Search" %>
 <% end %>
