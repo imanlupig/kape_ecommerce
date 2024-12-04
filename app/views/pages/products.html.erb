@@ -1,19 +1,12 @@
-<%= render 'layouts/navbar' %>
-<h1>Our Products</h1>
-<p>Explore our collection of coffee blends, accessories, and apparel.</p>
-<div>
-  <% if @products.any? %>
-    <% @products.each do |product| %>
-      <div>
-        <h3><%= product.name %></h3>
-        <p><%= number_to_currency(product.price) %></p>
-      </div>
+<h2>Welcome to Our Store</h2>
+<% @products.each do |product| %>
+  <div class="product-card">
+    <%= link_to product_path(product) do %>
+      <%= image_tag url_for(product.image), size: "150x150", style: "object-fit: contain;" if product.image.attached? %>
+      <h3><%= product.name %></h3>
+      <p><%= number_to_currency(product.price) %></p>
     <% end %>
-  <% else %>
-    <p>No products available.</p>
-  <% end %>
-</div>
-
-
+  </div>
+<% end %>
 
 <%= paginate @products %>

@@ -1,0 +1,10 @@
+<div class="categories-sidebar">
+  <h3>Categories</h3>
+  <ul>
+    <% Category.all.each do |category| %>
+      <li>
+        <%= link_to category.name, category_products_path(category) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

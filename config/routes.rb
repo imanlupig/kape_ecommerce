@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # resources :pages, only: [ :show ]
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
-  get "products", to: "pages#products"
+  resources :products, only: [ :index, :show ]
+  resources :categories, only: [] do
+    resources :products, only: :index
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
