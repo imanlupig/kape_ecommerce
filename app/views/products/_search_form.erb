@@ -1,0 +1,17 @@
+<% if @category.present? %>
+  <%= form_with url: category_products_path(@category), method: :get, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :search, "Search Products" %>
+      <%= form.text_field :search, placeholder: "Enter product name..." %>
+    </div>
+    <%= form.submit "Search" %>
+  <% end %>
+<% else %>
+  <%= form_with url: products_path, method: :get, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :search, "Search Products" %>
+      <%= form.text_field :search, placeholder: "Enter product name..." %>
+    </div>
+    <%= form.submit "Search" %>
+  <% end %>
+<% end %>
