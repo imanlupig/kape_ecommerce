@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
   resources :products, only: [ :index, :show ] do
-    resource :buy_now, only: [ :show ], controller: :buy_now
+    resource :buy_now, only: [ :show, :create ], controller: :buy_now do
+      get "success"
+    end
   end
   resources :categories, only: [] do
     resources :products, only: :index
