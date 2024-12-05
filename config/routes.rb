@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # resources :pages, only: [ :show ]
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
+
+  # products and buy now paths
   resources :products, only: [ :index, :show ] do
     resource :buy_now, only: [ :show, :create ], controller: :buy_now do
       get "success"
@@ -12,6 +14,9 @@ Rails.application.routes.draw do
   resources :categories, only: [] do
     resources :products, only: :index
   end
+
+  # cart
+  resources :carts, only: [ :create, :show ]
 
 
   devise_for :admin_users, ActiveAdmin::Devise.config

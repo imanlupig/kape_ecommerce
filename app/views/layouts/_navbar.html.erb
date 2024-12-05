@@ -9,5 +9,6 @@
     <li><%= link_to 'Contact', contact_path%> </li>
     <li><%= link_to 'Admin', admin_products_path %></li>
     <li><%= link_to 'Products', products_path %></li>
+    <li><%= link_to 'Cart', cart_path(@current_cart.secret_id)%>  </li>
   </ul>
 </nav>

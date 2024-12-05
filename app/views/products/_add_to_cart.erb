@@ -1,0 +1,7 @@
+<% if @current_cart && @current_cart.products.where(id: @product.id) %>
+  Already in cart
+<% else %>
+  <%= link_to "Add to cart", carts_path(product_id: @product.id),
+      #turn create into a post request
+      data: { turbo_method: "post"} %>
+<% end %>

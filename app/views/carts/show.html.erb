@@ -1,0 +1,11 @@
+<h1>Your Cart</h1>
+
+<% if @current_cart.cart_items.any? %>
+  <p>You have <%= @current_cart.cart_items.count %> in your cart.</p>
+<% else %>
+  <p>No Items in cart</p>
+<% end %>
+
+<%= @current_cart.products.each do |product| %>
+  <%= render "products/product", product: product %>
+<% end %>

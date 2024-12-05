@@ -20,7 +20,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
-    <%= Rails.application.credentials.dig(:stripe, :pk)%>
   </body>
 </html>
