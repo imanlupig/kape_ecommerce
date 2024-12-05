@@ -9,6 +9,9 @@
     <li><%= link_to 'Contact', contact_path%> </li>
     <li><%= link_to 'Admin', admin_products_path %></li>
     <li><%= link_to 'Products', products_path %></li>
-    <li><%= link_to 'Cart', cart_path(@current_cart.secret_id)%>  </li>
+    <li>
+        <%= link_to 'Cart', cart_path(@current_cart.secret_id)%>
+        <%= @current_cart.cart_items.sum(:quantity) %>
+    </li>
   </ul>
 </nav>

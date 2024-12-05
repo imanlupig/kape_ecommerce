@@ -2,6 +2,7 @@
 
 <% if @current_cart.cart_items.any? %>
   <p>You have <%= @current_cart.cart_items.count %> in your cart.</p>
+  <%= link_to "Check Out Now", checkout_cart_path(@current_cart.secret_id) %>
 <% else %>
   <p>No Items in cart</p>
 <% end %>

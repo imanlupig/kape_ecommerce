@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   end
 
   # cart
-  resources :carts, only: [ :create, :show ]
+  resources :carts, only: [ :create, :show ] do
+    get "checkout", on: :member, to: "carts#checkout"
+    post "stripe_session", on: :member, to: "carts#stripe_session"
+    get "success", on: :member, to: "carts#success"
+  end
 
 
   devise_for :admin_users, ActiveAdmin::Devise.config
