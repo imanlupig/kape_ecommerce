@@ -1,9 +1,42 @@
-<h1>Your Cart </h1>
-<% @current_cart.products.each do |product| %>
-  <p><%= product.name %></p>
-<% end %>
+<div class="container mt-5">
+  <h1 class="text-center mb-4" style="color: #4E342E;">Your Cart</h1>
 
-<div
-  data-controller="stripe-checkout"
-  data-stripe-checkout-url-value="<%= stripe_session_cart_path(@current_cart.secret_id)  %>">
+  <% if @current_cart.cart_items.any? %>
+    <p class="text-center" style="color: #795548;">You have <strong><%= @current_cart.cart_items.count %></strong> item(s) in your cart.</p>
+
+    <!-- Cart Items -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% @current_cart.cart_items.each do |cart_item| %>
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0" style="height: 350px;">
+            <% if cart_item.product.image.attached? %>
+              <%= image_tag url_for(cart_item.product.image), class: "card-img-top img-fluid", style: "object-fit: cover; height: 150px;" %>
+            <% else %>
+              <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 150px; background-color: #D7CCC8;">
+                <span style="color: #5D4037;">No Image Available</span>
+              </div>
+            <% end %>
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title" style="color: #3E2723;"><%= cart_item.product.name %></h5>
+                <p class="card-text" style="color: #6D4C41;">Price: <%= number_to_currency(cart_item.product.price) %></p>
+                <p class="card-text" style="color: #6D4C41;">Quantity: <%= cart_item.quantity %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Stripe Checkout Integration -->
+    <div class="text-center mt-4">
+      <div
+        data-controller="stripe-checkout"
+        data-stripe-checkout-url-value="<%= stripe_session_cart_path(@current_cart.secret_id) %>">
+      </div>
+    </div>
+  <% else %>
+    <!-- Empty Cart Message -->
+    <p class="text-center" style="color: #795548;">No items in your cart.</p>
+  <% end %>
 </div>

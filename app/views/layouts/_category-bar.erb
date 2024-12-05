@@ -1,8 +1,17 @@
-<%= form_with(url: products_path, method: :get, local: true) do |form| %>
 
-  <div class="form-group">
-    <%= form.label :category_id, "Category" %>
-    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name), include_blank: "All Categories" %>
-  </div>
 
-<% end %>
+<div class="form-container mb-4 p-3 bg-coffee-light text-beige rounded">
+  <h4 class="text-center mb-3">Filter Products by Category</h4>
+  <%= form_with(url: products_path, method: :get, local: true, class: "form-inline") do |form| %>
+    <div class="form-group">
+      <%= form.label :category_id, "Category", class: "form-label fw-bold text-beige" %>
+      <%= form.select :category_id,
+          options_from_collection_for_select(Category.all, :id, :name),
+          { include_blank: "All Categories" },
+          class: "form-select border-coffee text-dark" %>
+    </div>
+    <div class="mt-3 text-center">
+      <%= form.submit "Filter", class: "btn btn-coffee" %>
+    </div>
+  <% end %>
+</div>

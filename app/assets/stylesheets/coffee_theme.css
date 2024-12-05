@@ -1,0 +1,96 @@
+.text-coffee {
+  color: #4b3832; /* Dark brown */
+}
+
+.bg-coffee {
+  background-color: #7b5e57; /* Coffee brown */
+}
+
+.bg-light-coffee {
+  background-color: #d5bda7; /* Light coffee */
+}
+
+.text-dark-coffee {
+  color: #4b3832; /* Dark coffee */
+}
+
+.btn-coffee {
+  background-color: #7b5e57; /* Coffee brown */
+  color: #ffffff; /* White text */
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-coffee:hover {
+  background-color: #5a423d; /* Darker coffee brown for hover effect */
+  color: #ffffff; /* Ensure text remains white on hover */
+}
+
+.btn-coffee:focus {
+  outline: none;
+  box-shadow: 0 0 5px #7b5e57; /* Subtle coffee-colored focus outline */
+}
+
+.bg-coffee {
+  background-color: #4B2E2E; /* Coffee brown */
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: #F5F5DC; /* Beige color for text */
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+  color: #E1C699; /* Lighter coffee highlight */
+}
+
+.navbar-toggler {
+  border-color: #E1C699;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28225,198,153, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.bg-coffee-light {
+  background-color: #6A4C4C; /* Lighter coffee brown */
+  border: 1px solid #4B2E2E; /* Darker coffee border */
+}
+
+.text-beige {
+  color: #F5F5DC; /* Beige text color */
+}
+
+.border-coffee {
+  border-color: #4B2E2E; /* Dark coffee border */
+}
+
+.btn-coffee {
+  background-color: #4B2E2E; /* Dark coffee brown */
+  color: #F5F5DC; /* Beige text */
+  border: none;
+}
+
+.btn-coffee:hover {
+  background-color: #3A2626; /* Slightly darker on hover */
+  color: #E1C699; /* Lighter beige */
+}
+
+.photogrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.photogrid img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.instagram-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
