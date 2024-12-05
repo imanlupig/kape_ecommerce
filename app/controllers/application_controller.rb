@@ -3,12 +3,8 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :set_current_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :debug_current_customer
-  private
 
-  def debug_current_customer
-    Rails.logger.debug "Current customer: #{current_customer.inspect}" if customer_signed_in?
-  end
+  private
 
   def set_current_cart
     if session[:current_cart_id]
