@@ -9,9 +9,16 @@
     <li><%= link_to 'Contact', contact_path%> </li>
     <li><%= link_to 'Admin', admin_products_path %></li>
     <li><%= link_to 'Products', products_path %></li>
-    <li>
-        <%= link_to 'Cart', cart_path(@current_cart.secret_id)%>
-        <%= @current_cart.cart_items.sum(:quantity) %>
-    </li>
+    <li><%= link_to 'Cart', cart_path(@current_cart.secret_id)%></li>
+    <li><%= link_to "Log in", new_customer_session_path %></li>
+    <li><%= link_to "Sign up", customer_registration_path %></li>
+    <%= debug current_customer %>
+    <% if customer_signed_in? && current_customer.is_a?(Customer) %>
+      <li>Welcome, <%= current_customer.email %></li>
+      <li><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Log in", new_customer_session_path %></li>
+      <li><%= link_to "Sign up", new_customer_registration_path %></li>
+    <% end %>
   </ul>
 </nav>

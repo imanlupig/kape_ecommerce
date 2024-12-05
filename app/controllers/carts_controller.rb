@@ -3,6 +3,19 @@ class CartsController < ApplicationController
     @current_cart.cart_items.create(product_id: params[:product_id])
   end
 
+  def update
+    if @cart_item.update(quantity: params[:quantity])
+      redirect_to cart_path, notice: "Quantity updated successfully."
+    else
+      redirect_to cart_path, alert: "Failed to update quantity."
+    end
+  end
+
+  def remove
+    @cart_item.destroy
+    redirect_to cart_path, notice: "Item removed from cart."
+  end
+
   def show
   end
 

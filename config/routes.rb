@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :customers
+
   root "pages#index"
 
   # resources :pages, only: [ :show ]
@@ -20,6 +22,9 @@ Rails.application.routes.draw do
     get "checkout", on: :member, to: "carts#checkout"
     post "stripe_session", on: :member, to: "carts#stripe_session"
     get "success", on: :member, to: "carts#success"
+    post "add", to: "carts#create"
+    patch "update", to: "carts#update"
+    delete "remove", to: "carts#remove"
   end
 
 
